@@ -2,6 +2,7 @@ package com.voyager.mt.octo.endpoint.controller.rest;
 
 import com.voyager.mt.octo.endpoint.controller.IssueController;
 import com.voyager.mt.octo.endpoint.dto.EventDto;
+import com.voyager.mt.octo.endpoint.dto.IssueDto;
 import com.voyager.mt.octo.endpoint.mapper.EventMapper;
 import com.voyager.mt.octo.endpoint.mapper.IssueMapper;
 import com.voyager.mt.octo.service.IssueService;
@@ -25,8 +26,8 @@ public class IssueRestController implements IssueController {
     private IssueMapper issueMapper;
 
     @Override
-    public ResponseEntity<List<EventDto>> getIssueEvents(Long issueID) {
+    public ResponseEntity<IssueDto> getIssueEvents(Long issueID) {
         List<EventDto> eventsDto = eventMapper.map(issueService.listByEvents(issueID));
-        return ResponseEntity.ok(eventsDto);
+        return ResponseEntity.ok(IssueDto.builder().id(issueID).events(eventsDto).build());
     }
 }

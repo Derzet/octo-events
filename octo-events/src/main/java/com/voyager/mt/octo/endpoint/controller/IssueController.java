@@ -1,6 +1,6 @@
 package com.voyager.mt.octo.endpoint.controller;
 
-import com.voyager.mt.octo.endpoint.dto.EventDto;
+import com.voyager.mt.octo.endpoint.dto.IssueDto;
 import com.voyager.mt.octo.entity.Event;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.List;
 
 @Api(value = "issues")
 @RequestMapping(path = "/issues")
@@ -26,5 +24,5 @@ public interface IssueController {
     })
     @GetMapping(value = "{issueID}/events")
     @ResponseBody
-    ResponseEntity<List<EventDto>> getIssueEvents(@ApiParam(value = "ID(KEY) issue",required = true) @PathVariable("issueID") Long issueID);
+    ResponseEntity<IssueDto> getIssueEvents(@ApiParam(value = "ID(KEY) issue",required = true) @PathVariable("issueID") Long issueID);
 }
